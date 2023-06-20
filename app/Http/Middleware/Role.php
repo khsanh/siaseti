@@ -19,8 +19,8 @@ class Role
         if ($request->user()->tipe_user == $role) {
             return $next($request);
         }
-        // abort(403, 'Anda tidak memiliki hak mengakses laman tersebut!');
+        
         alert('Anda tidak memiliki hak untuk mengakses laman tersebut!')->background('#df6464');
         return redirect()->to(route('dashboard'));
-    }
+    } 
 }

@@ -15,8 +15,8 @@ class CreateJenisBarangsTable extends Migration
     {
         Schema::create('jenis_barang', function (Blueprint $table) {
             $table->id();
-            $table->string("kode_jenis_barang", 12)->unique()->nullable();
-            $table->string("jenis_barang", 50)->nullable();
+            $table->enum("kode_jenis_barang", ['IT-A', 'IT-B', 'IT-C', 'SOFT'])->nullable();
+            $table->string("nama_barang", 50)->nullable();
             $table->timestamps();
         });
     }

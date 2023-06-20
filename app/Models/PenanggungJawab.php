@@ -10,12 +10,12 @@ class PenanggungJawab extends Model
     protected $table = 'penanggung_jawab';
     protected $primarykey = 'id';
     protected $fillable = [
-        'id_divisi',
         'nip',
         'nama'
     ];
-    public function divisi()
+    public function Monitoring()
     {
-        return $this->belongsTo(Divisi::class, 'id_divisi', 'id');
+        return $this->hasMany(Monitoring::class);
     }
+    
 }

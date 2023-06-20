@@ -42,27 +42,11 @@
                             </div>
                             <div class="col-md-6 col-lg-5">
                                 <div class="form-group">
-                                    <label for="nip">Nama Pegawai</label>
-                                    <input type="text" name="nama" value="@if(!empty(old('nip'))){{ old('nama') }}@endif" class="form-control  input-full @error('nama') is-invalid @enderror" id="nama">
+                                    <label for="nama">Nama Pegawai</label>
+                                    <input type="text" name="nama" value="@if(!empty(old('nama'))){{ old('nama') }}@endif" class="form-control  input-full @error('nama') is-invalid @enderror" id="nama">
                                     @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong class="text-capitalize">{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-5">
-                                <div class="form-group">
-                                    <label for="id_divisi">Divisi</label>
-                                    <select name="id_divisi" class="form-control form-control">
-                                        <option>---Pilih---</option>
-                                        @foreach($d as $div)
-                                            <option value="{{$div->id}}" {{ old('id_divisi') == $div->id ? 'selected' : '' }} > {{$div->kode_divisi}} - {{$div->nama_divisi}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('id_divisi')
-                                    <span class="invalid-feedback a1" role="alert">
-                                        <strong class="text-capitalize">{{$message}}</strong>
                                     </span>
                                     @enderror
                                 </div>

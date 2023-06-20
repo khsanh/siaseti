@@ -38,21 +38,6 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-5">
                                 <div class="form-group">
-                                    <label for="id_divisi">Divisi</label>
-                                    <select name="id_divisi" class="form-control form-control">
-                                        @foreach($d as $div)
-                                            <option value="{{$div->id}}" {{ $dp->id_divisi == $div->id ? 'selected' : '' }} > {{$div->kode_divisi}} - {{$div->nama_divisi}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('id_divisi')
-                                        <span class="invalid-feedback" role="alert">
-                                             <strong class="text-capitalize">{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-5">
-                                <div class="form-group">
                                     <label for="nip">NIP Pegawai</label>
                                     <input value="@if(!empty(old('nip'))){{ old('nip') }}@else{{$dp->nip}}@endif" type="text" name="nip" class="form-control @error('nip') is-invalid @enderror" id="nip">
                                     @error('nip')

@@ -15,8 +15,7 @@ class CreateDivisisTable extends Migration
     {
         Schema::create('divisi', function (Blueprint $table) {
             $table->id();
-            $table->string("kode_divisi", 12)->unique()->nullable();
-            $table->string("nama_divisi", 100)->nullable();
+            $table->string("nama_divisi", 80)->nullable();
             $table->timestamps();
         });
     }

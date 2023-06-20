@@ -15,10 +15,8 @@ class CreateMemosTable extends Migration
     {
         Schema::create('memo', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('penerima');
-            $table->foreign('penerima')->references('id_user')->on('users');
-            $table->unsignedBigInteger('pengirim');
-            $table->foreign('pengirim')->references('id_user')->on('users');
+            $table->string("pengirim", 225)->nullable();
+            $table->string("penerima", 225)->nullable();
             $table->string("kode_memo", 25)->nullable();
             $table->date("tanggal_memo")->nullable();
             $table->string("perihal", 50)->nullable();

@@ -15,7 +15,6 @@ class CreatePenanggungJawabsTable extends Migration
     {
         Schema::create('penanggung_jawab', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_divisi')->constrained('divisi');
             $table->string("nip", 15)->unique()->nullable();
             $table->string("nama", 100)->nullable();
             $table->timestamps();

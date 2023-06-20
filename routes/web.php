@@ -1,18 +1,16 @@
 <?php
 
-use App\Http\Controllers\DataAnakController;
-use App\Http\Controllers\DataKeluargaController;
-use App\Http\Controllers\DataOrganisasiController;
-use App\Http\Controllers\DataPasanganController;
-use App\Http\Controllers\DataTrainingController;
-use App\Http\Controllers\DataSertifikasiController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\DivisiController;
-use App\Http\Controllers\NIPController;
 use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\TipePegawaiController;
+use App\Http\Controllers\MemoController;
+use App\Http\Controllers\BeritaAcaraController;
+use App\Http\Controllers\DetailAsetController;
+use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\MutasiController;
+use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\PenanggungJawabController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -52,124 +50,73 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
-Route::resource('Karyawan', PegawaiController::class);
+// Route untuk tipe user 'user'
+
+Route::resource('detailAset', DetailAsetController::class);
 Route::group(
     [
-        'prefix' => '/karyawan',
+        'prefix' => '/detailAset',
         'middleware' => 'auth'
     ],
     function () {
-        Route::post('/export', [PegawaiController::class, 'export'])->name('Karyawan.export');
-        Route::post('/import', [PegawaiController::class, 'import'])->name('Karyawan.import');
+        Route::get('detailAset/{id}', [DetailAsetController::class, 'showLabel'])->name('detailAset.showLabel');
     }
 );
-
-Route::get('getDataKaryawan', [PegawaiController::class, 'getDataKaryawan']);
-
-Route::resource('NIP', NIPController::class);
+Route::resource('Memo', MemoController::class);
+Route::resource('beritaAcara', BeritaAcaraController::class);
 Route::group(
     [
-        'prefix' => '/nip',
+        'prefix' => '/beritaAcara',
         'middleware' => 'auth'
     ],
     function () {
-        Route::post('/export', [NIPController::class, 'export'])->name('NIP.export');
+        Route::get('/create/{id}', [BeritaAcaraController::class, 'create2'])->name('beritaAcara.create2');
     }
 );
-
+Route::resource('Monitoring', MonitoringController::class);
 Route::group(
     [
-        'prefix' => '/get',
+        'prefix' => '/monitoring',
         'middleware' => 'auth'
     ],
     function () {
-        Route::get('/getSK', [NIPController::class, 'getSK']);
-        Route::get('/getNO/{id}/{sk}', [NIPController::class, 'getNoUrut']);
-        Route::get('/getNoUrut/{id}/{sk}', [NIPController::class, 'getNoUrutBaru']);
-        Route::get('/getDataNip/{id_peg}/{no_sk}/{no_urut}', [NIPController::class, 'getDataNip']);
-        Route::get('/ceknip/{id_peg}/{no_sk}/{no_urut}/{nama_lengkap}', [NIPController::class, 'cekNIP']);
-        Route::get('/getUnitKerja/{nama}', [PegawaiController::class, 'getUnitKerja']);
+        Route::get('/{iddetailaset}/list', [MonitoringController::class, 'listmonitoring'])->name('Monitoring.list');
+        Route::DELETE('/{iddetailaset}/deleteall', [MonitoringController::class, 'destroyall'])->name('Monitoring.deleteall');
+        Route::get('/scan', [MonitoringController::class, 'scan'])->name('Monitoring.scan');
+        Route::post('/validasi', [MonitoringController::class, 'validasi'])->name('Monitoring.validasi');
+        Route::get('/create/{id}', [MonitoringController::class, 'create2'])->name('Monitoring.create2');
     }
 );
-
-Route::resource('Keluarga', DataKeluargaController::class);
 Route::group(
     [
-        'prefix' => '/keluarga',
+        'prefix' => '/prosesMutasi',
         'middleware' => 'auth'
     ],
     function () {
-        Route::get('/export', [DataKeluargaController::class, 'export'])->name('Keluarga.export');
-        Route::get('/save', [DataAnakController::class, 'saveDataKeluarga'])->name('Keluarga.save');
-        Route::post('/import', [DataKeluargaController::class, 'import'])->name('Keluarga.import');
+        Route::get('/', [DetailAsetController::class, 'index2'])->name('prosesMutasi.index');
     }
 );
 
-Route::resource('Pasangan', DataPasanganController::class);
+Route::resource('Mutasi', MutasiController::class);
 Route::group(
     [
-        'prefix' => '/Pasangan',
+        'prefix' => '/mutasi',
         'middleware' => 'auth'
     ],
     function () {
-        Route::get('/{Pasangan}/create', [DataPasanganController::class, 'buat'])->name('Pasangan.buat');
-    }
-);
-Route::resource('Anak', DataAnakController::class);
-
-Route::group(
-    [
-        'prefix' => '/Anak',
-        'middleware' => 'auth'
-    ],
-    function () {
-        Route::get('/{id}/create', [DataAnakController::class, 'buat'])->name('Anak.buat');
-        Route::get('/list/{idkeluarga}', [DataAnakController::class, 'list'])->name('Anak.list');
+        Route::get('/{iddetailaset}/list', [MutasiController::class, 'listmutasi'])->name('Mutasi.list');
+        Route::DELETE('/{iddetailaset}/deleteall', [MutasiController::class, 'destroyall'])->name('Mutasi.deleteall');
+        Route::get('/create/{id}', [MutasiController::class, 'create3'])->name('Mutasi.create3');
+        Route::post('/store2', [MutasiController::class, 'store2'])->name('Mutasi.store2');
+        Route::get('/create2/{id}', [MutasiController::class, 'create2'])->name('Mutasi.create2');
     }
 );
 
-Route::resource('tipePegawai', TipePegawaiController::class);
-Route::resource('penanggungJawab', PenanggungJawabController::class);
-Route::resource('Training', DataTrainingController::class);
-Route::group(
-    [
-        'prefix' => '/training',
-        'middleware' => 'auth'
-    ],
-    function () {
-        Route::get('/{idpegawai}/list', [DataTrainingController::class, 'listtraining'])->name('Training.list');
-        Route::DELETE('/{idpegawai}/deleteall', [DataTrainingController::class, 'destroyall'])->name('Training.deleteall');
-        Route::get('/export', [DataTrainingController::class, 'export'])->name('Training.export');
-        Route::post('/import', [DataTrainingController::class, 'import'])->name('Training.import');
-    }
-);
+Route::group(['middleware' => 'role:admin'], function () {
+    Route::resource('jenisBarang', JenisBarangController::class);
+    Route::resource('penanggungJawab', PenanggungJawabController::class);
+    Route::resource('lokasi', LokasiController::class);
 
-Route::resource('Sertifikasi', DataSertifikasiController::class);
-Route::group(
-    [
-        'prefix' => '/sertifikasi',
-        'middleware' => 'auth'
-    ],
-    function () {
-        Route::get('/{idpegawai}/list', [DataSertifikasiController::class, 'listsertifikasi'])->name('Sertifikasi.list');
-        Route::DELETE('/{idpegawai}/deleteall', [DataSertifikasiController::class, 'destroyall'])->name('Sertifikasi.deleteall');
-        Route::get('/export', [DataSertifikasiController::class, 'export'])->name('Sertifikasi.export');
-        Route::post('/import', [DataSertifikasiController::class, 'import'])->name('Sertifikasi.import');
-    }
-);
+});
 
-Route::resource('Jabatan', JabatanController::class);
-Route::resource('dataDivisi', DivisiController::class);
-
-Route::resource('Organisasi', DataOrganisasiController::class);
-Route::group(
-    [
-        'prefix' => '/organisasi',
-        'middleware' => 'auth'
-    ],
-    function () {
-        Route::get('/export', [DataOrganisasiController::class, 'export'])->name('Organisasi.export');
-        Route::post('/import', [DataOrganisasiController::class, 'import'])->name('Organisasi.import');
-    }
-);
-Route::resource('admin', UsersController::class)->middleware(['auth', 'role:superadmin']);;
+Route::resource('admin', UsersController::class)->middleware(['auth', 'role:superadmin']);

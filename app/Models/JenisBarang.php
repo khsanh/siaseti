@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class JenisBarang extends Model
 {
-    use HasFactory;
+    protected $table = 'jenis_barang';
+    protected $primarykey = 'id';
+    protected $fillable = [
+        'kode_jenis_barang',
+        'nama_barang',
+    ];
+    public function detail_aset()
+    {
+        return $this->hasMany(DetailAset::class);
+    }
+    public function mutasi()
+    {
+        return $this->hasMany(DetailAset::class);
+    }
 }
+
+

@@ -61,6 +61,7 @@
                                     <label for="tipe_user">Tipe User</label>
                                     <select name="tipe_user" class="form-control form-control @error('tipe_user') is-invalid @enderror" id="tipe_user">
                                         <option value="">---Pilih---</option>
+                                        <option value="user" @if(!empty(old('tipe_user'))) {{old('tipe_user') == 'user' ? 'selected' : ''}}@else{{$user->tipe_user == 'user' ? 'selected' : ''}}@endif>User</option>
                                         <option value="admin" @if(!empty(old('tipe_user'))) {{old('tipe_user') == 'admin' ? 'selected' : ''}}@else{{$user->tipe_user == 'admin' ? 'selected' : ''}}@endif>admin</option>
                                         <option value="superadmin" @if(!empty(old('tipe_user'))) {{old('tipe_user') == 'superadmin' ? 'selected' : ''}}@else{{$user->tipe_user == 'superadmin' ? 'selected' : ''}}@endif>Super admin</option>
                                     </select>

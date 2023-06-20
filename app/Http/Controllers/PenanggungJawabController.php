@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\PenanggungJawab;
-use App\Models\Divisi;
 use Illuminate\Http\Request;
 
 class PenanggungJawabController extends Controller
@@ -20,9 +19,8 @@ class PenanggungJawabController extends Controller
     public function index()
     {
         $dp = PenanggungJawab::all();
-        $d = Divisi::all();
 
-        return view('pages.PenanggungJawab.index', compact('dp', 'd'));
+        return view('pages.PenanggungJawab.index', compact('dp'));
     }
 
     /**
@@ -32,8 +30,8 @@ class PenanggungJawabController extends Controller
      */
     public function create()
     {
-        $d = Divisi::all();
-        return view('pages.PenanggungJawab.create', compact('d'));
+        
+        return view('pages.PenanggungJawab.create');
     }
 
     /**
@@ -48,11 +46,10 @@ class PenanggungJawabController extends Controller
 
         $request->validate([
             'nip' => 'required|min:2',
-            'nama' => 'required',
-            'id_divisi' => 'required'
+            'nama' => 'required'
         ]);
-        $tp = PenanggungJawab::create($request->all());
-        if ($tp) {
+        $dp = PenanggungJawab::create($request->all());
+        if ($dp) {
             alert('Data Berhasil Tersimpan!')->background('#B5EDCC');
         } else {
             alert('Simpan Data Gagal!')->background('#F4CACA');
@@ -79,9 +76,8 @@ class PenanggungJawabController extends Controller
     public function edit($id)
     {
         $dp = PenanggungJawab::find($id);
-        $d = Divisi::all();
 
-        return view('pages.PenanggungJawab.edit', compact('dp','d'));
+        return view('pages.PenanggungJawab.edit', compact('dp'));
     }
 
     /**
@@ -94,14 +90,12 @@ class PenanggungJawabController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nip' => 'required|min:2',
-            'nama' => 'required',
-            'id_divisi' => 'required'
+            'nip' => 'required|max:9',
+            'nama' => 'required'
         ]);
 
         $data = PenanggungJawab::find($id);
         $data->update([
-            'id_divisi' => $request->id_divisi,
             'nip' => $request->nip,
             'nama' => $request->nama,
         ]);
@@ -110,7 +104,7 @@ class PenanggungJawabController extends Controller
         } else {
             alert('Update Data Gagal!')->background('#F4CACA');
         }
-        return redirect()->route('PenanggungJawab.index');
+        return redirect()->route('penanggungJawab.index');
     }
 
     /**

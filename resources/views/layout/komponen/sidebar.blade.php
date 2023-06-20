@@ -26,19 +26,19 @@
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="nav-item @yield('statustipepegawai')">
-          <a href="{{route('tipePegawai.index')}}">
+        <li class="nav-item @yield('statusdetailaset')">
+          <a href="{{route('detailAset.index')}}">
             <i class="fas fa-laptop"></i>
             <p>Data Aset IT</p>
           </a>
         </li>
-        <li class="nav-item @yield('statustipepegawai')">
-          <a href="{{route('tipePegawai.index')}}">
+        <li class="nav-item @yield('statusmonitoring')">
+          <a href="{{route('Monitoring.index')}}">
             <i class="fas fa-user-edit"></i>
             <p>Monitoring</p>
           </a>
         </li>
-        <li class="nav-item @yield('statuskaryawan')">
+        <li class="nav-item @yield('statusmutasi')">
           <a data-toggle="collapse" href="#base">
             <i class="fas fa-arrows-alt-h"></i>
             <p>Mutasi</p>
@@ -46,40 +46,40 @@
           </a>
           <div class="collapse" id="base">
             <ul class="nav nav-collapse">
-              <li class="@yield('statusdatakaryawan')">
-                <a href="{{ route('Karyawan.index')}}">
-                  <span class="sub-item">Data Mutasi</span>
-                </a>
-              </li>
-              <li class="@yield('statusdatakeluarga')">
-                <a href="{{route('Keluarga.index')}}">
+              <li class="@yield('statusdatamemo')">
+                <a href="{{route('Memo.index')}}">
                   <span class="sub-item">Memo Mutasi</span>
                 </a>
               </li>
-              <li class="@yield('statusdatasertifikasi')">
-                <a href="{{route('Sertifikasi.index')}}">
+              <li class="@yield('statusberitaacara')">
+                <a href="{{route('beritaAcara.index')}}">
                   <span class="sub-item">Berita Acara</span>
+                </a>
+              </li>
+              <li class="@yield('statusprosesmutasi')">
+                <a href="{{ route('prosesMutasi.index')}}">
+                  <span class="sub-item">Proses Mutasi</span>
+                </a>
+              </li>
+              <li class="@yield('statusdatamutasi')">
+                <a href="{{ route('Mutasi.index')}}">
+                  <span class="sub-item">Data Mutasi</span>
                 </a>
               </li>
             </ul>
           </div>
         </li>
-        <li class="nav-item @yield('statustipepegawai')">
-          <a href="{{route('tipePegawai.index')}}">
+        @if (Auth::user()->tipe_user == 'admin')
+        <li class="nav-item @yield('statusdetailaset')">
+          <a href="{{route('detailAset.index')}}">
             <i class="fas fa-print"></i>
             <p>Cetak Label</p>
           </a>
         </li>
-        <li class="nav-item @yield('statustipepegawai')">
-          <a href="{{route('tipePegawai.index')}}">
+        <li class="nav-item @yield('statusjenisbarang')">
+          <a href="{{route('jenisBarang.index')}}">
             <i class="fas fa-keyboard"></i>
             <p>Jenis Barang</p>
-          </a>
-        </li>
-        <li class="nav-item @yield('statusdivisi')">
-          <a href="{{route('dataDivisi.index')}}">
-            <i class="fas fa-users"></i>
-            <p>Daftar Divisi</p>
           </a>
         </li>
         <li class="nav-item @yield('statusdaftarpegawai')">
@@ -88,6 +88,13 @@
             <p>Daftar Pegawai</p>
           </a>
         </li>
+        <li class="nav-item @yield('statuslokasi')">
+          <a href="{{route('lokasi.index')}}">
+            <i class="fas fa-map"></i>
+            <p>Daftar Lokasi</p>
+          </a>
+        </li>
+        @endif
         @if (Auth::user()->tipe_user == 'superadmin')
         <li class="nav-item @yield('statusadmin')">
           <a href="{{route('admin.index')}}">

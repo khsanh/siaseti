@@ -50,7 +50,6 @@
                                 <tr>
                                     <th>NIP</th>
                                     <th>Nama Pegawai</th>
-                                    <th>Divisi</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -59,7 +58,6 @@
                                 <tr style="white-space:nowrap; width:1%;">
                                     <td>{{$dp->nip}}</td>
                                     <td>{{$dp->nama}}</td>
-                                    <td>{{$dp->divisi->nama_divisi}}</td>
                                     <td>
                                         <a href="{{route('penanggungJawab.edit', $dp->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
                                             <i class="fa fa-edit"></i>
