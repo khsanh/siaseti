@@ -149,6 +149,36 @@ class DetailAsetController extends Controller
         return view('pages.detailAset.label', compact('da'));
     }
 
+    public function showLabel2($idLokasi)
+    {
+        $L = Lokasi::findOrFail($idLokasi);
+        $da = DetailAset::where('id_lokasi', $idLokasi)->get();
+        // $pdf = PDF::loadView('pages.detailAset.label', compact('da'));
+        // $pdf->setPaper('a4', 'portait');
+        // return $pdf->stream('label.pdf');
+        
+        return view('pages.detailAset.cetak', compact('L', 'da'));
+    }
+    
+    // public function printData(Request $request)
+    // {
+    //     $id_lokasi = $request->input('id_lokasi');
+
+    //     if (empty($id_lokasi)) {
+    //         // Tampilkan semua data jika tidak ada filter
+    //         $da = DetailAset::pluck('id','kode_aset');
+    //     } else {
+    //         $da = DetailAset::where('id_lokasi', $id_lokasi)->pluck('id','kode_aset');
+    //     }
+
+    //     if ($da->isEmpty()) {
+    //         // Data tidak ditemukan
+    //         return redirect()->back()->with('error', 'Data tidak ditemukan');
+    //     }
+
+    //     return view('label', ['da' => $da]);
+    // }
+
     /**
      * Show the form for editing the specified resource.
      *

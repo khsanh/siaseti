@@ -181,7 +181,7 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        <a class="btn btn-danger" href="{{route('Mutasi.index')}}">Batal</a>
+                        <a class="btn btn-danger" href="{{route('prosesMutasi.index')}}">Batal</a>
                         <input type="hidden" name="id_detail_aset" value="{{ $da->id }}">
                         <button type="submit" class="btn btn-success submit">Simpan</button>
                     </div>

@@ -59,15 +59,19 @@
                                     <td>{{$ba->perihal}}</td>
                                     <td>{{$ba->tanggal_berita_acara}}</td>
                                     <td>
+                                        @if (Auth::user()->tipe_user == 'admin')
                                         <a href="{{route('beritaAcara.edit', $ba->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        @endif
                                         <a href="{{route('beritaAcara.show', $ba->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
                                             <i class="fas fa-user"></i>
                                         </a>
+                                        @if (Auth::user()->tipe_user == 'admin')
                                         <button id="removem" data-id="{{$ba->id }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger show_confirm" data-original-title="Hapus Data">
                                             <i class="fa fa-trash-alt"></i>
                                         </button>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

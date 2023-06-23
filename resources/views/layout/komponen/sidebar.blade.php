@@ -56,11 +56,13 @@
                   <span class="sub-item">Berita Acara</span>
                 </a>
               </li>
+              @if (Auth::user()->tipe_user == 'admin')
               <li class="@yield('statusprosesmutasi')">
                 <a href="{{ route('prosesMutasi.index')}}">
                   <span class="sub-item">Proses Mutasi</span>
                 </a>
               </li>
+              @endif
               <li class="@yield('statusdatamutasi')">
                 <a href="{{ route('Mutasi.index')}}">
                   <span class="sub-item">Data Mutasi</span>
@@ -70,12 +72,6 @@
           </div>
         </li>
         @if (Auth::user()->tipe_user == 'admin')
-        <li class="nav-item @yield('statusdetailaset')">
-          <a href="{{route('detailAset.index')}}">
-            <i class="fas fa-print"></i>
-            <p>Cetak Label</p>
-          </a>
-        </li>
         <li class="nav-item @yield('statusjenisbarang')">
           <a href="{{route('jenisBarang.index')}}">
             <i class="fas fa-keyboard"></i>

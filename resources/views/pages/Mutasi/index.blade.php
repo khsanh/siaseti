@@ -33,12 +33,6 @@
                         <div class="col-md-6">
                             <h4 class="card-title">Data Mutasi</h4>
                         </div>
-                        <div class="col-md-6">
-                            <a class="btn btn-primary ml-1 btn-sm" href="{{route('Mutasi.create')}}">
-                                <i class="fa fa-plus"></i>
-                                Tambah Data Mutasi
-                            </a>
-                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -77,9 +71,11 @@
                                             <a href="{{route('Mutasi.list', $mutasi->id_detail_aset)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
                                                 <i class="fas fa-info-circle"></i>
                                             </a>
+                                            @if (Auth::user()->tipe_user == 'admin')
                                             <button type="button" data-id="{{$mutasi->id_detail_aset}}" id="remove" data-toggle="tooltip" title="" class="btn btn-link btn-danger deletemutasi" data-original-title="Hapus Mutasi">
                                                 <i class="fa fa-trash-alt"></i>
                                             </button>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

@@ -31,10 +31,6 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center" id="ch">
                         <h4 class="card-title">Data Mutasi : @if(!empty($detail->kode_aset)) <span class="text text-dark bg-grey1">{{$detail->kode_aset}}</span>@endif</h4>
-                        <a class="btn btn-primary ml-auto btn-sm" href="{{route('Mutasi.create')}}">
-                            <i class="fa fa-plus"></i>
-                            Tambah Mutasi
-                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -68,15 +64,19 @@
                                     <td style="white-space:nowrap; width:1%;">{{$Mutasi->berita_acara->kode_berita_acara}}</td>
                                     <td style="white-space:nowrap; width:1%;">
                                         <div class="form-button-action">
+                                            @if (Auth::user()->tipe_user == 'admin')
                                             <a href="{{route('Mutasi.edit', $Mutasi->id)}}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Mutasi">
                                                 <i class="fa fa-edit"></i>
                                             </a>
+                                            @endif
                                             <a href="{{route('Mutasi.show', $Mutasi->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
                                                 <i class="fas fa-info-circle"></i>
                                             </a>
+                                            @if (Auth::user()->tipe_user == 'admin')
                                             <button type="submit" data-id="{{$Mutasi->id}}" id="remove" data-toggle="tooltip" title="" class="btn btn-link btn-danger deletemutasi" data-original-title="Hapus Mutasi">
                                                 <i class="fa fa-trash-alt"></i>
                                             </button>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

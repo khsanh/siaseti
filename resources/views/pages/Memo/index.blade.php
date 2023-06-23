@@ -31,10 +31,12 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center" id="ch">
                         <h4 class="card-title">Data Memo</h4>
+                        @if (Auth::user()->tipe_user == 'user')
                         <a class="btn btn-primary ml-auto btn-sm" href="{{route('Memo.create')}}">
                             <i class="fa fa-plus"></i>
                             Tambah Memo
                         </a>
+                        @endif
                     </div>
                 </div>
 
@@ -62,19 +64,25 @@
                                     <td>{{$m->perihal}}</td>
                                     <td>{{$m->tanggal_memo}}</td>
                                     <td>
+                                        @if (Auth::user()->tipe_user == 'user')
                                         <a href="{{route('Memo.edit', $m->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        @endif
                                         <a href="{{route('Memo.show', $m->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
                                             <i class="fas fa-user"></i>
                                         </a>
+                                        @if (Auth::user()->tipe_user == 'user')
                                         <button id="removem" data-id="{{$m->id }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger show_confirm" data-original-title="Hapus Data">
                                             <i class="fa fa-trash-alt"></i>
                                         </button>
+                                        @endif
+                                        @if (Auth::user()->tipe_user == 'admin')
                                         @if (null === $ba->where('id_memo', $m->id)->first())
                                         <a href="{{route('beritaAcara.create2', $m->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Balas Memo">
                                             <i class="fas fa-square"></i>
                                         </a>
+                                        @endif
                                         @endif
                                     </td>
                                 </tr>

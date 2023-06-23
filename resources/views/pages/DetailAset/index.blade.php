@@ -29,14 +29,58 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center" id="ch">
-                        <h4 class="card-title">Data aset</h4>
-                        <a class="btn btn-primary ml-auto btn-sm" href="{{route('detailAset.create')}}">
-                            <i class="fa fa-plus"></i>
-                            Tambah data
-                        </a>
+                    <div class="col-md-7">
+                            <h4 class="card-title">Data Aset</h4>
+                        </div>
+                        <div class="col-md-6">
+                            @if (Auth::user()->tipe_user == 'admin')
+                            <button type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#cetakmodal">
+                                <i class="fas fa-print"></i>
+                                Cetak Label Perruang
+                            </button>
+                            <a class="btn btn-primary ml-1 btn-sm" href="{{route('detailAset.create')}}">
+                                <i class="fa fa-plus"></i>
+                                Tambah Data Aset
+                            </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
-
+                <div class="modal fade" id="cetakmodal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Cetak Label Berdasarkan Ruang</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <form method="get">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="col-12">
+                                        <div class="form-group form-inline">
+                                            <label for="id_lokasi" class="col-md-4 col-form-label">Lokasi</label>
+                                            <div class="col-md-8 p-0">
+                                                <select name="id_lokasi" class="form-control input-full" id="id_lokasi">
+                                                    <option value="">---Pilih---</option>
+                                                    @foreach($L as $L)
+                                                    <option value="{{$L->id}}">{{$L->kode_lokasi}} - {{$L->nama_lokasi}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small class="text-info text-capitalize">*Kosongkan pilihan untuk cetak semua label</small>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btn-sm btn-elek" type="submit">
+                                        Cetak
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="form-inline form-group col-8">
                         <label for="search" class="col-md-2 col-form-label">Search: </label>
@@ -52,6 +96,7 @@
                                     <th>Kode Aset</th>
                                     <th>Lokasi</th>
                                     <th>Kondisi</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -68,18 +113,31 @@
                                     <td>{{$da->lokasi->nama_lokasi}}</td>
                                     <td>{{$da->kondisi}}</td>
                                     <td>
+                                        @if( strpos($da->status_aset,"Aktif") !== false)
+                                        <span class="badge text-success text-bold" style="background-color: #F1FFE5; border: 1px solid #2AD000">Aktif</span>
+                                        @elseif(strpos($da->status_aset,"Nonaktif") !== false)
+                                        <span class="badge text-danger text-bold" style="background-color: #FFE5E7; border: 1px solid #DA1E28">Nonaktif</span>
+                                        @else
+                                        <p>-</p>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (Auth::user()->tipe_user == 'admin')
                                         <a href="{{route('detailAset.edit', $da->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        @endif
                                         <a href="{{route('detailAset.show', $da->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
                                             <i class="fas fa-user"></i>
                                         </a>
+                                        @if (Auth::user()->tipe_user == 'admin')
                                         <a href="{{route('detailAset.showLabel', $da->id)}}" target="_blank" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Cetak Label">
                                             <i class="fas fa-print"></i>
                                         </a>
                                         <button id="removeda" data-id="{{ $da->id }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger show_confirm" data-original-title="Hapus Data">
                                             <i class="fa fa-trash-alt"></i>
                                         </button>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -170,4 +228,22 @@
         $(".swal-modal").css('background-color', '#F4E2E2');
     })
 </script>
+<script>
+        function printContent() {
+            var selectElement = document.getElementById('id_lokasi');
+            var selectedOption = selectElement.value;
+            var url = '{{ route("detailAset.cetak", ["idLokasi" => ":idLokasi"]) }}';
+            url = url.replace(':idLokasi', selectedOption);
+            var printWindow = window.open(url, 'print_window');
+            printWindow.addEventListener('load', function () {
+                printWindow.print();
+                // printWindow.close();
+            });
+        }
+
+        document.querySelector('.btn-elek').addEventListener('click', function (event) {
+            event.preventDefault();
+            printContent();
+        });
+    </script>
 @endpush

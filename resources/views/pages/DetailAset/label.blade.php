@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Template Label Aset</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .label {
             display: flex;
@@ -13,25 +12,30 @@
         .container{
             margin:0px;
         }
+        .row {
+            margin: -1px;
+        }
 
         .column {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            font-size: 10px;
         }
 
         .column-1 {
-            width: 1.8cm;
+            width: 1.7cm;
             border-right: 3px solid #000;
+            font-size: 9px;
         }
 
         .column-2 {
             width: 3.5cm;
+            font-size: 10px;
         }
 
         .column-3 {
             width: 4.5cm;
+            font-size: 10px;
         }
 
         .logo {
@@ -63,32 +67,30 @@
     </style>
 </head>
 <body>
-    <table width="100%">
+    <table>
         <tr>
             <td>
-                <div class="container">  
-                    <div class="row">
-                        <div class="label">
-                            <div class="column column-1">
-                                <div class="logo">
-                                    <div class="pro">PROPERTY OF:</div>
-                                    <img src="{{ asset('assets/logo_perusahaan.png') }}" alt="Logo Perusahaan">
-                                </div>
+                <div class="row">
+                    <div class="label">
+                        <div class="column column-1">
+                            <div class="logo">
+                                <div class="pro">PROPERTY OF:</div>
+                                <img src="{{ asset('assets/logo_perusahaan.png') }}" alt="Logo Perusahaan">
                             </div>
-                            <div class="separator"></div>
-                            <div class="column column-2">
-                                <div>Sites Location</div>
-                                <div class="bold">PT Rekaindo Global Jasa</div>
-                                <div>Helpdesk Contact</div>
-                                <div class="bold">WA : 0811 3484 701</div>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="column column-2">
+                            <div>Sites Location</div>
+                            <div class="bold">PT Rekaindo Global Jasa</div>
+                            <div>Helpdesk Contact</div>
+                            <div class="bold">WA : 0811 3484 701</div>
+                        </div>
+                        <div class="column column-3">
+                            <div>Asset Tag</div>
+                            <div class="qr-code">
+                                <img src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->generate($da->id)) }}" alt="QR Code">
                             </div>
-                            <div class="column column-3">
-                                <div>Asset Tag</div>
-                                <div class="qr-code">
-                                    <img src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->generate($da->id)) }}" alt="QR Code">
-                                </div>
-                                <div class="bold">{{ $da->kode_aset }}</div>
-                            </div>
+                            <div class="bold">{{ $da->kode_aset }}</div>
                         </div>
                     </div>
                 </div>

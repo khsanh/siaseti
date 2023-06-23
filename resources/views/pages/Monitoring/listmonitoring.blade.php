@@ -30,10 +30,6 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center" id="ch">
                         <h4 class="card-title">Data Monitoring : @if(!empty($detail->kode_aset)) <span class="text text-dark bg-grey1">{{$detail->kode_aset}}</span>@endif</h4>
-                        <a class="btn btn-primary ml-auto btn-sm" href="{{route('Monitoring.create')}}">
-                            <i class="fa fa-plus"></i>
-                            Tambah Monitoring
-                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -68,9 +64,11 @@
                                             <a href="{{route('Monitoring.show', $Monitoring->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
                                                 <i class="fas fa-info-circle"></i>
                                             </a>
+                                            @if (Auth::user()->tipe_user == 'user')
                                             <button type="submit" data-id="{{$Monitoring->id}}" id="remove" data-toggle="tooltip" title="" class="btn btn-link btn-danger deletemonitoring" data-original-title="Hapus Monitoring">
                                                 <i class="fa fa-trash-alt"></i>
                                             </button>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

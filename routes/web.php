@@ -60,6 +60,7 @@ Route::group(
     ],
     function () {
         Route::get('detailAset/{id}', [DetailAsetController::class, 'showLabel'])->name('detailAset.showLabel');
+        Route::get('cetak/{idLokasi}', [DetailAsetController::class, 'showLabel2'])->name('detailAset.cetak');
     }
 );
 Route::resource('Memo', MemoController::class);

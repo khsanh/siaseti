@@ -84,7 +84,7 @@
                     </div>
             </div>
             <div class="card-action">
-                <a class="btn btn-danger" href="{{route('beritaAcara.index')}}">Batal</a>
+                <a class="btn btn-danger" href="{{route('Memo.index')}}">Batal</a>
                 <input type="hidden" name="id_memo" value="{{ $m->id }}" required>
                 <button type="submit" class="btn btn-success">Simpan</button>
             </div>

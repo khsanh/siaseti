@@ -2,18 +2,6 @@
     <div class="container-fluid">
         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
             <li class="nav-item dropdown hidden-caret">
-                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <i class="fas fa-grip-horizontal"></i>
-                </a>
-                <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
-                    <div class="quick-actions-header">
-                        <span class="title mb-1">Pintasan</span>
-                        <span class="subtitle op-8">Penambahan</span>
-                    </div>
-                    
-                </div>
-            </li>
-            <li class="nav-item dropdown hidden-caret">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                     <div class="avatar-sm">
                         @if(Auth::user()->foto == 'null')

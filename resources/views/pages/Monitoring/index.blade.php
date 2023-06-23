@@ -33,10 +33,12 @@
                             <h4 class="card-title">Data Monitoring</h4>
                         </div>
                         <div class="col-md-6">
+                            @if (Auth::user()->tipe_user == 'user')
                             <a class="btn btn-primary ml-1 btn-sm" href="{{route('Monitoring.scan')}}">
                                 <i class="fa fa-plus"></i>
                                 Tambah Data Monitoring
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -74,9 +76,11 @@
                                             <a href="{{route('Monitoring.list', $monitoring->id_detail_aset)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
                                                 <i class="fas fa-info-circle"></i>
                                             </a>
+                                            @if (Auth::user()->tipe_user == 'user')
                                             <button type="button" data-id="{{$monitoring->id_detail_aset}}" id="remove" data-toggle="tooltip" title="" class="btn btn-link btn-danger deletemonitoring" data-original-title="Hapus Monitoring">
                                                 <i class="fa fa-trash-alt"></i>
                                             </button>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
