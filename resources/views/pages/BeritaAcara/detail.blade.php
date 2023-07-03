@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div class="col-9">
                                     <div class="form-group form-inline">
-                                        <label for="inlineinput" class="col-md-4 col-form-label">Pengirim</label>
+                                        <label for="inlineinput" class="col-md-4 col-form-label">Nomor Memo</label>
                                         <div class="col-md-8 p-0">
                                             <input type="text" value="{{$ba->memo->kode_memo}}" class="form-control input-full" id="inlineinput" style="background-color:#E5EBFF; color: black;" disabled>
                                         </div>
@@ -63,9 +63,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-inline">
-                                        <label for="inlineinput" class="col-md-4 col-form-label">Deskripsi</label>
+                                        <label for="deskripsi" class="col-md-4 col-form-label">Deskripsi</label>
                                         <div class="col-md-8 p-0">
-                                            <input type="text" value="{{$ba->deskripsi}}" class="form-control input-full" id="inlineinput" style="background-color:#E5EBFF; color: black;" disabled>
+                                            <textarea class="form-control input-full" id="inlineinput" style="background-color:#E5EBFF; color: black;" disabled>{{$ba->deskripsi}}</textarea>
                                         </div>
                                     </div>
                                 </div>

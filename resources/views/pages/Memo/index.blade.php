@@ -70,7 +70,7 @@
                                         </a>
                                         @endif
                                         <a href="{{route('Memo.show', $m->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
-                                            <i class="fas fa-user"></i>
+                                            <i class="fas fa-file-alt"></i>
                                         </a>
                                         @if (Auth::user()->tipe_user == 'user')
                                         <button id="removem" data-id="{{$m->id }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger show_confirm" data-original-title="Hapus Data">
@@ -80,7 +80,7 @@
                                         @if (Auth::user()->tipe_user == 'admin')
                                         @if (null === $ba->where('id_memo', $m->id)->first())
                                         <a href="{{route('beritaAcara.create2', $m->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Balas Memo">
-                                            <i class="fas fa-square"></i>
+                                            <i class="fas fa-envelope"></i>
                                         </a>
                                         @endif
                                         @endif

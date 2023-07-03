@@ -64,13 +64,13 @@
                                     <td style="white-space:nowrap; width:1%;">{{$Mutasi->berita_acara->kode_berita_acara}}</td>
                                     <td style="white-space:nowrap; width:1%;">
                                         <div class="form-button-action">
-                                            @if (Auth::user()->tipe_user == 'admin')
+                                            <!-- @if (Auth::user()->tipe_user == 'admin')
                                             <a href="{{route('Mutasi.edit', $Mutasi->id)}}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Mutasi">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            @endif
+                                            @endif -->
                                             <a href="{{route('Mutasi.show', $Mutasi->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
-                                                <i class="fas fa-info-circle"></i>
+                                                <i class="fas fa-file-alt"></i>
                                             </a>
                                             @if (Auth::user()->tipe_user == 'admin')
                                             <button type="submit" data-id="{{$Mutasi->id}}" id="remove" data-toggle="tooltip" title="" class="btn btn-link btn-danger deletemutasi" data-original-title="Hapus Mutasi">

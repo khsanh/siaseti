@@ -47,6 +47,7 @@
                             <thead>
                                 <tr>
                                     <th>Nomor Berita Acara</th>
+                                    <th>Nomor Memo</th>
                                     <th>Perihal</th>
                                     <th>Tanggal</th>
                                     <th>Actions</th>
@@ -56,6 +57,7 @@
                                 @foreach($ba as $ba)
                                 <tr style="white-space:nowrap; width:1%;">
                                     <td>{{$ba->kode_berita_acara}}</td>
+                                    <td>{{$ba->memo->kode_memo}}</td>
                                     <td>{{$ba->perihal}}</td>
                                     <td>{{$ba->tanggal_berita_acara}}</td>
                                     <td>
@@ -65,7 +67,7 @@
                                         </a>
                                         @endif
                                         <a href="{{route('beritaAcara.show', $ba->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
-                                            <i class="fas fa-user"></i>
+                                            <i class="fas fa-file-alt"></i>
                                         </a>
                                         @if (Auth::user()->tipe_user == 'admin')
                                         <button id="removem" data-id="{{$ba->id }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger show_confirm" data-original-title="Hapus Data">

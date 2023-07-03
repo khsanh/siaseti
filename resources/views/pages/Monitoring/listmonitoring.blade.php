@@ -62,7 +62,7 @@
                                     <td style="white-space:nowrap; width:1%;">
                                         <div class="form-button-action">
                                             <a href="{{route('Monitoring.show', $Monitoring->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
-                                                <i class="fas fa-info-circle"></i>
+                                                <i class="fas fa-file-alt"></i>
                                             </a>
                                             @if (Auth::user()->tipe_user == 'user')
                                             <button type="submit" data-id="{{$Monitoring->id}}" id="remove" data-toggle="tooltip" title="" class="btn btn-link btn-danger deletemonitoring" data-original-title="Hapus Monitoring">

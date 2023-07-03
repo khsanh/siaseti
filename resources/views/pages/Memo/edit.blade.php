@@ -73,10 +73,10 @@
                             <div class="col-md-6 col-lg-5">
                                 <div class="form-group">
                                     <label for="tanggal_memo">Tanggal Memo</label>
-                                    <input name="tanggal_memo" type="text" value="{{\Carbon\Carbon::parse($m->tanggal_memo)->format('d-m-Y')}}" class="form-control form-control @error('tanggal_memo') is-invalid @enderror" id="tanggal_memo">
+                                    <input name="tanggal_memo" type="text" value="{{\Carbon\Carbon::parse($m->tanggal_memo)}}" class="form-control tanggal_memo @error('tanggal_memo') is-invalid @enderror" id="tanggal_memo">
                                     @error('tanggal_memo')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong class="text-capitalize">{{ $message }}</strong>
+                                        <strong class="text-capitalize">{{$message}}</strong>
                                     </span>
                                     @enderror
                                 </div>

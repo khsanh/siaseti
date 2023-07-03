@@ -69,9 +69,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-inline">
-                                        <label for="inlineinput" class="col-md-4 col-form-label">Deskripsi</label>
+                                        <label for="deskripsi" class="col-md-4 col-form-label">Deskripsi</label>
                                         <div class="col-md-8 p-0">
-                                            <input type="text" value="{{$m->deskripsi}}" class="form-control input-full" id="inlineinput" style="background-color:#E5EBFF; color: black;" disabled>
+                                            <textarea class="form-control input-full" id="inlineinput" style="background-color:#E5EBFF; color: black;" disabled>{{$m->deskripsi}}</textarea>
                                         </div>
                                     </div>
                                 </div>

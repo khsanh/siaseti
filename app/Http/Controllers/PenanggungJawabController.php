@@ -45,7 +45,7 @@ class PenanggungJawabController extends Controller
         // dd($request);
 
         $request->validate([
-            'nip' => 'required|min:2',
+            'nip' => 'required|unique:penanggung_jawab,nip|digits:9',
             'nama' => 'required'
         ]);
         $dp = PenanggungJawab::create($request->all());
@@ -90,7 +90,7 @@ class PenanggungJawabController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nip' => 'required|max:9',
+            'nip' => 'required|unique:penanggung_jawab,nip|digits:9',
             'nama' => 'required'
         ]);
 

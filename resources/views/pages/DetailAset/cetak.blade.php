@@ -99,7 +99,7 @@
                     <div>Sites Location</div>
                     <div class="bold">PT Rekaindo Global Jasa</div>
                     <div>Helpdesk Contact</div>
-                    <div class="bold">WA : 0811 3484 701</div>
+                    <div class="bold">WA : 0819 0475 7690</div>
                 </div>
                 <div class="column column-3">
                     <div>Asset Tag</div>

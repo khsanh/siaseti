@@ -153,7 +153,7 @@
                                     <iframe src="{{ asset('/laraview/#..'.Storage::url($da->foto_aset)) }}" width="600px" height="400px"></iframe>
                                     <a class="btn btn-primary btn-sm text-white" href="{{ Storage::url($da->foto_aset)}}"> Download File</a>
                                     @else
-                                    <h6 class="text-center">foto Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('Monitoring.edit',$monitoring->id)}}">Edit Monitoring</a></span> untuk Menambahkan.</h6>
+                                    <h6 class="text-center">foto Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('detailAset.edit',$da->id)}}">Edit Data Aset</a></span> untuk Menambahkan.</h6>
                                     @endif
                                 </div>
                             </div>

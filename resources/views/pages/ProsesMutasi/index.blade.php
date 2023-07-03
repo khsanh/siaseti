@@ -59,10 +59,10 @@
                                     <td>{{$da->kondisi}}</td>
                                     <td>
                                         <a href="{{route('Mutasi.create3', $da->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Pemindahan Aset">
-                                            <i class="fa fa-edit"></i>
+                                            <i class="fa fa-file-export"></i>
                                         </a>
                                         <a href="{{route('Mutasi.create2', $da->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Penghancuran Aset">
-                                            <i class="fas fa-user"></i>
+                                            <i class="fas fa-minus-circle"></i>
                                         </a>
                                     </td>
                                 </tr>

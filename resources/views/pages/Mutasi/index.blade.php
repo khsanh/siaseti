@@ -55,7 +55,6 @@
                             <thead>
                                 <tr>
                                     <th>Kode Aset</th>
-                                    <th>Nama Barang</th>
                                     <th>Jumlah Mutasi</th>
                                     <th>Action</th>
                                 </tr>
@@ -64,7 +63,6 @@
                                 @foreach($mu as $mutasi)
                                 <tr>
                                     <td style="white-space:nowrap; width:1%;">{{$mutasi->kode_aset}}</td>
-                                    <td style="white-space:nowrap; width:1%;">{{$mutasi->nama_barang}}</td>
                                     <td style="white-space:nowrap; width:1%;">{{$mutasi->jumlah}}</td>
                                     <td style="white-space:nowrap; width:1%;">
                                         <div class="form-button-action">

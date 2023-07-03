@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Memo;
 use App\Models\BeritaAcara;
@@ -49,12 +49,14 @@ class MemoController extends Controller
         // dd($request);
 
         $request->validate([
-            'pengirim' => 'required',
+            // 'pengirim' => 'required',
+            'penerima' => 'required',
             'kode_memo' => 'required',
             'tanggal_memo' => 'required',
             'perihal' => 'required',
             'deskripsi' => 'required',
         ]);
+        $request ['pengirim' ]=Auth::user()->nama;
         $m = Memo::create($request->all());
         if ($m) {
             alert('Data Berhasil Tersimpan!')->background('#B5EDCC');

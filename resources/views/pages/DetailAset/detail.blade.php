@@ -132,7 +132,6 @@
                                         <div class="col-md-8 p-0">
                                             @if(Storage::exists($da->foto_aset))
                                             <iframe src="{{ asset('/laraview/#..'.Storage::url($da->foto_aset)) }}" width="600px" height="400px"></iframe>
-                                            <a class="btn btn-primary btn-sm text-white" href="{{ Storage::url($da->foto_aset)}}"> Download File</a>
                                             @else
                                             <h6 class="text-center">Gambar Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('detailAset.edit',$da->id)}}">Edit Data Aset</a></span> untuk Menambahkan.</h6>
                                             @endif
@@ -143,7 +142,6 @@
                                         <div class="col-md-8 p-0">
                                             @if(Storage::exists($da->bast))
                                             <iframe src="{{ asset('/laraview/#..'.Storage::url($da->bast)) }}" width="600px" height="400px"></iframe>
-                                            <a class="btn btn-primary btn-sm text-white" href="{{ Storage::url($da->bast)}}"> Download File</a>
                                             @else
                                             <h6 class="text-center">Gambar Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('detailAset.edit',$da->id)}}">Edit Data Aset</a></span> untuk Menambahkan.</h6>
                                             @endif
@@ -154,7 +152,6 @@
                                         <div class="col-md-8 p-0">
                                             @if(Storage::exists($da->sertifikat))
                                             <iframe src="{{ asset('/laraview/#..'.Storage::url($da->sertifikat)) }}" width="600px" height="400px"></iframe>
-                                            <a class="btn btn-primary btn-sm text-white" href="{{ Storage::url($da->sertifikat)}}"> Download File</a>
                                             @else
                                             <h6 class="text-center">Gambar Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('detailAset.edit',$da->id)}}">Edit Data Aset</a></span> untuk Menambahkan.</h6>
                                             @endif

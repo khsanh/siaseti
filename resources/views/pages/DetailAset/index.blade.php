@@ -69,10 +69,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <small class="text-info text-capitalize">*Kosongkan pilihan untuk cetak semua label</small>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-primary btn-sm btn-elek" type="submit">
+                                    <button class="btn btn-primary btn-sm btn-cetak" type="submit">
                                         Cetak
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
@@ -128,7 +127,7 @@
                                         </a>
                                         @endif
                                         <a href="{{route('detailAset.show', $da->id)}}" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Lihat Data">
-                                            <i class="fas fa-user"></i>
+                                            <i class="fas fa-file-alt"></i>
                                         </a>
                                         @if (Auth::user()->tipe_user == 'admin')
                                         <a href="{{route('detailAset.showLabel', $da->id)}}" target="_blank" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Cetak Label">
@@ -229,21 +228,21 @@
     })
 </script>
 <script>
-        function printContent() {
-            var selectElement = document.getElementById('id_lokasi');
-            var selectedOption = selectElement.value;
-            var url = '{{ route("detailAset.cetak", ["idLokasi" => ":idLokasi"]) }}';
-            url = url.replace(':idLokasi', selectedOption);
-            var printWindow = window.open(url, 'print_window');
-            printWindow.addEventListener('load', function () {
-                printWindow.print();
-                // printWindow.close();
-            });
-        }
-
-        document.querySelector('.btn-elek').addEventListener('click', function (event) {
-            event.preventDefault();
-            printContent();
+    function printContent() {
+        var selectElement = document.getElementById('id_lokasi');
+        var selectedOption = selectElement.value;
+        var url = '{{ route("detailAset.cetak", ["idLokasi" => ":idLokasi"]) }}';
+        url = url.replace(':idLokasi', selectedOption);
+        var printWindow = window.open(url, 'print_window');
+        printWindow.addEventListener('load', function () {
+            printWindow.print();
+            // printWindow.close();
         });
-    </script>
+    }
+
+    document.querySelector('.btn-cetak').addEventListener('click', function (event) {
+        event.preventDefault();
+        printContent();
+    });
+</script>
 @endpush

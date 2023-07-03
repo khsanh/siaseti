@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-5">
                                <div class="form-group">
-                                    <label for="id_memo">Nama Karyawan</label>
+                                    <label for="id_memo">Nomor Memo</label>
                                     <select name="id_memo" class="form-control form-control @error('id_memo') is-invalid @enderror" required id="id_memo">
                                         <option value="">---Pilih---</option>
                                         @foreach($m as $m)
@@ -67,10 +67,10 @@
                             <div class="col-md-6 col-lg-5">
                                 <div class="form-group">
                                     <label for="tanggal_berita_acara">Tanggal Berita Acara</label>
-                                    <input name="tanggal_berita_acara" type="text" value="{{\Carbon\Carbon::parse($ba->tanggal_berita_acara)->format('d-m-Y')}}" class="form-control form-control @error('tanggal_berita_acara') is-invalid @enderror" id="tanggal_berita_acara">
+                                    <input name="tanggal_berita_acara" type="text" value="{{\Carbon\Carbon::parse($ba->tanggal_berita_acara)}}" class="form-control tanggal_berita_acara @error('tanggal_berita_acara') is-invalid @enderror" id="tanggal_berita_acara">
                                     @error('tanggal_berita_acara')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong class="text-capitalize">{{ $message }}</strong>
+                                        <strong class="text-capitalize">{{$message}}</strong>
                                     </span>
                                     @enderror
                                 </div>

@@ -72,45 +72,6 @@ class MutasiController extends Controller
         $da = DetailAset::find($request->id_detail_aset);
         $mutasi->id_detail_aset = $request['id_detail_aset'];
 
-        // $jb = JenisBarang::find($request->input('id_jenis_barang'));
-        // $L = Lokasi::find($request->input('id_lokasi'));
-        // $kode_aset = $request->input('nomor_aset') . '/' . $request->input('asal_perusahaan') . '/' . $jb->kode_jenis_barang . '/' . $L->kode_lokasi . '/' . $request->input('kategori_aset') . '/' . $request->input('tgl_kapitalisasi');
-        // $da = DetailAset::find($request->input('id_detail_aset'));
-        // $da->nomor_aset = $request->input('nomor_aset');
-        // $da->kategori_aset = $request->input('kategori_aset');
-        // $da->id_jenis_barang = $request->input('id_jenis_barang');
-        // $da->deskripsi_aset = $request->input('deskripsi_aset');
-        // $da->merek_aset = $request->input('merek_aset');
-        // $da->tgl_kapitalisasi = $request->input('tgl_kapitalisasi');
-        // $da->kondisi = $request->input('kondisi');
-        // $da->id_lokasi = $request->input('id_lokasi');
-        // $da->asal_perusahaan = $request->input('asal_perusahaan');
-        // $da->bast = $request->input('bast');
-        // $da->sertifikat = $request->input('sertifikat');
-        // $da->pic_aset = $request->input('pic_aset');
-        // $da->foto_aset = $request->input('foto_aset');
-        // $da->nomor_kartu_aset = $request->input('nomor_kartu_aset');
-        // $da->kode_aset = $kode_aset;
-
-
-        // $mutasi = new Mutasi;
-        // $mutasi->id_detail_aset = $request('id_detail_aset');
-        // $mutasi->id_berita_acara = $request('id_berita_acara');
-        // $mutasi->lokasi_lama = $request('lokasi_lama');
-        // $mutasi->kode_aset_lama = $request('lokasi_lama');
-        // $mutasi->tgl_mutasi = Carbon::createFromFormat('d-m-Y', $request('tgl'));
-        // $mutasi = Mutasi::create([
-        //     'id_detail_aset' => $request['id_detail_aset'],
-        //     'id_berita_acara' => $request['id_berita_acara'],
-        //     'lokasi_lama' => $request['lokasi_lama'],
-        //     'lokasi_baru' => $request['lokasi_baru'],
-        //     'penanggung_jawab_lama' => $request['penanggung_jawab_lama'],
-        //     'penanggung_jawab_baru' => $request['penanggung_jawab_baru'],
-        //     'id_divisi_lama' => $request['id_divisi_lama'],
-        //     'id_divisi_baru' => $request['id_divisi_baru'],
-        //     'tgl_mutasi' => Carbon::createFromFormat('d-m-Y', $request['tgl']),
-        // ]);
-
         if ($mutasi->save()) {
             $da->save();
             alert('Data Berhasil Tersimpan!')->background('#B5EDCC');
@@ -144,17 +105,6 @@ class MutasiController extends Controller
         ]);
         $da = DetailAset::find($request->id_detail_aset);
         $mutasi->id_detail_aset = $request['id_detail_aset'];
-        // $mutasi = Mutasi::create([
-        //     'id_detail_aset' => $request['id_detail_aset'],
-        //     'id_berita_acara' => $request['id_berita_acara'],
-        //     'lokasi_lama' => $request['lokasi_lama'],
-        //     'lokasi_baru' => $request['lokasi_baru'],
-        //     'penanggung_jawab_lama' => $request['penanggung_jawab_lama'],
-        //     'penanggung_jawab_baru' => $request['penanggung_jawab_baru'],
-        //     'id_divisi_lama' => $request['id_divisi_lama'],
-        //     'id_divisi_baru' => $request['id_divisi_baru'],
-        //     'tgl_mutasi' => Carbon::createFromFormat('d-m-Y', $request['tgl']),
-        // ]);
 
         if ($mutasi->save()) {
             $da->save();
@@ -172,32 +122,20 @@ class MutasiController extends Controller
         $da = DetailAset::all()->sortBy('kode_aset');
         $ba = BeritaAcara::all();
         $L = Lokasi::all();
-        return view('pages.Mutasi.edit', compact('mutasi', 'da','ba','L','pj','d'));
+        return view('pages.Mutasi.edit', compact('mutasi', 'da','ba','L'));
     }
     public function update(Request $request, $id)
     {
-        $detail = DetailAset::where('id', $request['id_detail_aset'])->first();
+        $da = DetailAset::find($request->id_detail_aset);
         $data_mutasi = Mutasi::where('id', $id)->first();
         $request->validate([
             'id_detail_aset' => 'required',
             'id_berita_acara' => 'required',
-            'lokasi_lama' => 'required',
-            'lokasi_baru' => 'required',
-            'penanggung_jawab_lama' => 'required',
-            'penanggung_jawab_baru' => 'required',
-            'id_divisi_lama' => 'required',
-            'id_divisi_baru' => 'required',
-            'tgl_mutasi' => 'required|date',
+            'tgl_mutasi' => 'required',
         ]);
-        $identitas = $detail->kode_aset;
         $data_mutasi->id_detail_aset = $request['id_detail_aset'];
         $data_mutasi->id_berita_acara = $request['id_berita_acara'];
         $data_mutasi->lokasi_lama = $request['lokasi_lama'];
-        $data_mutasi->lokasi_baru = $request['lokasi_baru'];
-        $data_mutasi->penanggung_jawab_lama = $request['penanggung_jawab_lama'];
-        $data_mutasi->penanggung_jawab_baru = $request['penanggung_jawab_baru'];
-        $data_mutasi->id_divisi_lama = $request['id_divisi_lama'];
-        $data_mutasi->id_divisi_baru = $request['id_divisi_baru'];
         if ($request->has('tgl_mutasi')) {
             $data_mutasi->tgl_mutasi = Carbon::createFromFormat('d-m-Y', $request['tgl_mutasi']);
         } else {
@@ -214,8 +152,9 @@ class MutasiController extends Controller
 
     public function show($id)
     {
-        $mutasi = Mutasi::with('detail_aset')->find($id);
-        return view('pages.Mutasi.detail', compact('mutasi'));
+        $mutasi = Mutasi::with('detailAset')->find($id);
+        $da = $mutasi->detailAset;
+        return view('pages.Mutasi.detail', compact('mutasi', 'da'));
     }
     public function destroy($id)
     {

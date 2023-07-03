@@ -57,7 +57,7 @@ class DetailAsetController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'nomor_aset' => 'required',
+            'nomor_aset' => 'required|digits:3',
             'kategori_aset' => 'required',
             'id_jenis_barang' => 'required',
             'deskripsi_aset' => 'required',
@@ -67,8 +67,6 @@ class DetailAsetController extends Controller
             'status_aset' => 'required',
             'id_lokasi' => 'required',
             'asal_perusahaan' => 'required',
-            'bast' => 'required|file|mimes:pdf,jpg,png,jpeg',
-            'sertifikat' => 'required|file|mimes:pdf,jpg,png,jpeg',
             'pic_aset' => 'required',
             'foto_aset' => 'required|file|mimes:pdf,jpg,png,jpeg',
             'nomor_kartu_aset' => 'required',
@@ -206,7 +204,7 @@ class DetailAsetController extends Controller
         $da = DetailAset::where('id', $id)->first();
         if (($da->sertifikat != null && Storage::exists($da->sertifikat)) && ($da->bast != null && Storage::exists($da->bast)) && ($da->foto_aset != null && Storage::exists($da->foto_aset))) {
             $request->validate([
-                'nomor_aset' => 'required',
+                'nomor_aset' => 'required|digits:3',
                 'kategori_aset' => 'required',
                 'id_jenis_barang' => 'required',
                 'deskripsi_aset' => 'required',
@@ -223,7 +221,7 @@ class DetailAsetController extends Controller
             ]);
         } else if (($da->sertifikat != null && !Storage::exists($da->sertifikat)) || ($da->bast != null && !Storage::exists($da->bast)) || ($da->foto_aset != null && !Storage::exists($da->foto_aset))){
             $request->validate([
-                'nomor_aset' => 'required',
+                'nomor_aset' => 'required|digits:3',
                 'kategori_aset' => 'required',
                 'id_jenis_barang' => 'required',
                 'deskripsi_aset' => 'required',
@@ -243,7 +241,7 @@ class DetailAsetController extends Controller
             ]);
         } else {
             $request->validate([
-                'nomor_aset' => 'required',
+                'nomor_aset' => 'required|digits:3',
                 'kategori_aset' => 'required',
                 'id_jenis_barang' => 'required',
                 'deskripsi_aset' => 'required',

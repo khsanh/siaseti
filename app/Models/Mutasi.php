@@ -16,7 +16,7 @@ class Mutasi extends Model
         'kode_aset_lama',
         'tgl_mutasi',
     ];
-    public function detail_aset()
+    public function detailAset()
     {
         return $this->belongsTo(DetailAset::class, 'id_detail_aset');
     }
@@ -24,9 +24,9 @@ class Mutasi extends Model
     {
         return $this->belongsTo(BeritaAcara::class, 'id_berita_acara');
     }
-    public function lok_lama()
+    public function lokasi()
     {
-        return $this->belongsTo(Lokasi::class, 'id_lokasi_lama');
+        return $this->belongsTo(Lokasi::class, 'lokasi_lama', 'id');
     }
     
 }

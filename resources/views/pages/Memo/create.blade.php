@@ -30,7 +30,7 @@
                     @csrf
                     <div class="card-body">
                     <div class="row">
-                            <div class="col-md-6 col-lg-5">
+                            <!-- <div class="col-md-6 col-lg-5">
                                 <div class="form-group">
                                     <label for="pengirim">Pengirim</label>
                                     <input type="text" name="pengirim" value="@if(!empty(old('pengirim'))){{ old('pengirim') }}@endif" class="form-control  input-full @error('pengirim') is-invalid @enderror" id="pengirim">
@@ -40,7 +40,7 @@
                                     </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-6 col-lg-5">
                                 <div class="form-group">
                                     <label for="penerima">Penerima</label>
