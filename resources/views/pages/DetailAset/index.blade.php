@@ -3,7 +3,7 @@
 @section('content')
 <div class="page-inner">
     <div class="page-header">
-        <h4 class="page-title">Daftar aset</h4>
+        <h4 class="page-title">Daftar Aset</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="{{route('dashboard')}}">
@@ -14,13 +14,13 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="{{route('detailAset.index')}}">Daftar aset</a>
+                <a href="{{route('detailAset.index')}}">Daftar Aset</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="{{route('detailAset.index')}}">Data aset</a>
+                <a href="{{route('detailAset.index')}}">Data Aset</a>
             </li>
         </ul>
     </div>
@@ -36,7 +36,7 @@
                             @if (Auth::user()->tipe_user == 'admin')
                             <button type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#cetakmodal">
                                 <i class="fas fa-print"></i>
-                                Cetak Label Perruang
+                                Cetak Label Per Ruang
                             </button>
                             <a class="btn btn-primary ml-1 btn-sm" href="{{route('detailAset.create')}}">
                                 <i class="fa fa-plus"></i>
@@ -106,7 +106,9 @@
                                 @foreach($da as $da)
                                 <tr style="white-space:nowrap; width:1%;">
                                     <td>
-                                        {!! QrCode::size(70)->generate($da->id); !!}
+                                        <div style="padding: 6px; ">
+                                            {!! QrCode::size(60)->generate($da->id); !!}
+                                        </div>
                                     </td>
                                     <td>{{$da->kode_aset}}</td>
                                     <td>{{$da->lokasi->nama_lokasi}}</td>

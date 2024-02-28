@@ -65,17 +65,6 @@
                             </div>
                             <div class="col-md-6 col-lg-5">
                                 <div class="form-group">
-                                    <label for="nomor_aset">Nomor Aset</label>
-                                    <input type="text" name="nomor_aset" value="@if(!empty(old('nomor_aset'))){{ old('nomor_aset') }}@endif" class="form-control  input-full @error('nomor_aset') is-invalid @enderror" id="nomor_aset">
-                                    @error('nomor_aset')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong class="text-capitalize">{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-5">
-                                <div class="form-group">
                                     <label for="id_lokasi">Lokasi Aset</label>
                                     <select name="id_lokasi" class="form-control form-control">
                                         <option>---Pilih---</option>

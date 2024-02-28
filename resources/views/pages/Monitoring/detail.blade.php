@@ -125,35 +125,28 @@
                                 </div>
                             </div>
                             <div class="form-group form-inline">
+                                <label for="inlineinput" class="col-md-4 col-form-label">Foto Aset</label>
+                                <div class="col-md-8 p-0">
+                                    <img src="{{ asset('Aset/' . $da->foto_aset) }}" alt="image profile" class="avatar-img img-responsive rounded" style="max-height: 400px; max-width: 600px;">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
                                 <label for="inlineinput" class="col-md-4 col-form-label">BAST</label>
                                 <div class="col-md-8 p-0">
-                                    @if(Storage::exists($da->bast))
-                                    <iframe src="{{ asset('/laraview/#..'.Storage::url($da->bast)) }}" width="600px" height="400px"></iframe>
-                                    <a class="btn btn-primary btn-sm text-white" href="{{ Storage::url($da->bast)}}"> Download File</a>
+                                    @if($da->bast !== null)
+                                        <iframe src="{{ asset('dAset/'.$da->bast) }}" width="600px" height="400px"></iframe>
                                     @else
-                                    <h6 class="text-center">Gambar Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('detailAset.edit',$da->id)}}">Edit Data Aset</a></span> untuk Menambahkan.</h6>
+                                        <h6 class="text-center">Dokumen Tidak ada</h6>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group form-inline">
                                 <label for="inlineinput" class="col-md-4 col-form-label">Sertifikat</label>
                                 <div class="col-md-8 p-0">
-                                    @if(Storage::exists($da->sertifikat))
-                                    <iframe src="{{ asset('/laraview/#..'.Storage::url($da->sertifikat)) }}" width="600px" height="400px"></iframe>
-                                    <a class="btn btn-primary btn-sm text-white" href="{{ Storage::url($da->sertifikat)}}"> Download File</a>
+                                    @if($da->sertifikat !== null)
+                                    <iframe src="{{ asset('deAset/'.$da->sertifikat) }}" width="600px" height="400px"></iframe>
                                     @else
-                                    <h6 class="text-center">Gambar Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('detailAset.edit',$da->id)}}">Edit Data Aset</a></span> untuk Menambahkan.</h6>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group form-inline">
-                                <label for="inlineinput" class="col-md-4 col-form-label">Foto</label>
-                                <div class="col-md-8 p-0">
-                                    @if(Storage::exists($da->foto_aset))
-                                    <iframe src="{{ asset('/laraview/#..'.Storage::url($da->foto_aset)) }}" width="600px" height="400px"></iframe>
-                                    <a class="btn btn-primary btn-sm text-white" href="{{ Storage::url($da->foto_aset)}}"> Download File</a>
-                                    @else
-                                    <h6 class="text-center">foto Tidak ada. Klik <span class="badge badge-primary"><a class="text-white" href="{{route('detailAset.edit',$da->id)}}">Edit Data Aset</a></span> untuk Menambahkan.</h6>
+                                    <h6 class="text-center">Dokumen Tidak ada</h6>
                                     @endif
                                 </div>
                             </div>
